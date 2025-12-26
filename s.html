@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Mind Game Test</title>
+</head>
+
+<body>
+
+<h2>Color Confusion</h2>
+
+<div id="word" style="font-size:40px;">TEST</div>
+
+<button onclick="check('red')">Red</button>
+<button onclick="check('blue')">Blue</button>
+<button onclick="check('green')">Green</button>
+<button onclick="check('yellow')">Yellow</button>
+
+<p>Score: <span id="score">0</span></p>
+
+<script>
+const colors = ["red", "blue", "green", "yellow"];
+let score = 0;
+let correctColor = "";
+
+function newWord() {
+  const word = document.getElementById("word");
+  const color = colors[Math.floor(Math.random() * colors.length)];
+  const text = colors[Math.floor(Math.random() * colors.length)];
+
+  word.textContent = text.toUpperCase();
+  word.style.color = color;
+  correctColor = color;
+}
+
+function check(choice) {
+  if (choice === correctColor) {
+    score++;
+  } else {
+    score--;
+  }
+  document.getElementById("score").textContent = score;
+  newWord();
+}
+
+newWord();
+</script>
+</body>
+</html>
+
+
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Mind Game</title>
+
+  <style>
+    body {
+      background: #111;
+      color: white;
+      font-family: Arial, sans-serif;
+      text-align: center;
+      padding-top: 40px;
+    }
+
+    .game {
+      width: 300px;
+      margin: auto;
+      background: #222;
+      padding: 20px;
+      border-radius: 8px;
+    }
+
+    h2 {
+      margin-top: 0;
+    }
+
+    #word {
+      font-size: 40px;
+      margin: 20px 0;
+    }
+
+    button {
+      padding: 10px 15px;
+      margin: 5px;
+      font-size: 16px;
+      cursor: pointer;
+    }
+
+    #options {
+      margin-top: 10px;
+    }
+
+    .score, .timer {
+      margin-top: 15px;
+      font-size: 16px;
+    }
+  </style>
+</head>
+
+<body>
+
+  <div class="game">
+    <h2>Color Focus</h2>
+  <p>INSTRUCTIONS</p>
+  <p>Click the button that matches the COLOR of the text, not the word itself</p>
+  <p>Example:</p>
+
+<P>The word says BLUE</P>
+
+<p>text color is RED</p>
+    
+    </div>
+  </div>
+
+</body>
+</html>
+
+
+
+
+
+
+
+
+

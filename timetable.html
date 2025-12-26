@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Study Timetable</title>
+
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+    }
+
+    #message {
+      color: red;
+      margin-top: 10px;
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 10px;
+    }
+
+    th, td {
+      border: 1px solid #333;
+      padding: 8px;
+      text-align: center;
+    }
+
+    th {
+      background-color: #f4f4f4;
+    }
+
+    tr:nth-child(even) {
+      background-color: #eaeaea;
+    }
+  </style>
+</head>
+
+<body>
+
+<section id="timetable">
+  <h2>Study Timetable (Free)</h2>
+
+  <input type="text" id="subject" placeholder="Subject name">
+  <input type="text" id="time" placeholder="Time (e.g. 5–6 PM)">
+  <button type="button" onclick="addTimetable()">Add</button>
+
+  <p id="message"></p>
+
+  <h3>Your Timetable</h3>
+
+  <table>
+    <thead>
+      <tr>
+        <th>Time</th>
+        <th>Subject</th>
+      </tr>
+    </thead>
+    <tbody id="timetablelist">
+      <!-- rows added here -->
+    </tbody>
+  </table>
+</section>
+
+<script>
+function addTimetable() {
+  const subjectInput = document.getElementById("subject");
+  const timeInput = document.getElementById("time");
+  const message = document.getElementById("message");
+  const tableBody = document.getElementById("timetablelist");
+
+  const subject = subjectInput.value.trim();
+  const time = timeInput.value.trim();
+
+  if (subject === "" || time === "") {
+    message.textContent = "Please enter both subject and time.";
+    return;
+  }
+
+  message.textContent = "";
+
+  const row = document.createElement("tr");
+
+  const timeCell = document.createElement("td");
+  timeCell.textContent = time;
+
+  const subjectCell = document.createElement("td");
+  subjectCell.textContent = subject;
+
+  row.appendChild(timeCell);
+  row.appendChild(subjectCell);
+
+  tableBody.appendChild(row);
+
+  subjectInput.value = "";
+  timeInput.value = "";
+}
+</script>
+
+</body>
+</html>
+<!DOCTYPE html>
+<html>
+<head>
+  <style>
+    body {
+      background: lightblue;
+      display: flex;
+      justify-content: center;
+    }
+
+    #timetable {
+      background: white;
+      padding: 30px;
+      border-radius: 12px;
+      box-shadow: 0 0 20px black;
+    }
+  </style>
+</head>
+
+<body>
+  <section id="timetable">
+    <h2>TIME TABLE</h2>
+    <p>The timetable is included to help the user organize  their study time in a clear and structured way.</p>
+  </section>
+</body>
+

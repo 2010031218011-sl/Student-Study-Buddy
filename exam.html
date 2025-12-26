@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Exam Planner</title>
+
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #eef2f7;
+      display: flex;
+      justify-content: center;
+      padding: 30px;
+    }
+
+    #planner {
+      background: white;
+      width: 450px;
+      padding: 25px;
+      border-radius: 10px;
+      box-shadow: 0 6px 15px rgba(0,0,0,0.15);
+    }
+
+    h2 {
+      text-align: center;
+      color: #333;
+    }
+
+    input {
+      width: 100%;
+      padding: 10px;
+      margin: 8px 0;
+      border-radius: 5px;
+      border: 1px solid #ccc;
+    }
+
+    button {
+      width: 100%;
+      padding: 10px;
+      background-color: #4a6cf7;
+      color: white;
+      border: none;
+      border-radius: 5px;
+      font-size: 16px;
+      cursor: pointer;
+    }
+
+    button:hover {
+      background-color: #3655d8;
+    }
+
+    #message {
+      color: red;
+      text-align: center;
+      margin-top: 8px;
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 15px;
+    }
+
+    th, td {
+      border: 1px solid #ccc;
+      padding: 8px;
+      text-align: center;
+    }
+
+    th {
+      background-color: #4a6cf7;
+      color: white;
+    }
+
+    tr:nth-child(even) {
+      background-color: #f3f6ff;
+    }
+  </style>
+</head>
+
+<body>
+
+<div id="planner">
+  <h2>Exam Planning</h2>
+
+  <input type="text" id="subject" placeholder="Subject Name">
+  <input type="date" id="date">
+  <input type="text" id="syllabus" placeholder="Syllabus to Cover">
+  <button onclick="addPlan()">Add Plan</button>
+
+  <p id="message"></p>
+
+  <table>
+    <thead>
+      <tr>
+        <th>Subject</th>
+        <th>Date</th>
+        <th>Syllabus</th>
+      </tr>
+    </thead>
+    <tbody id="planList"></tbody>
+  </table>
+</div>
+
+<script>
+function addPlan() {
+  const subject = document.getElementById("subject").value.trim();
+  const date = document.getElementById("date").value;
+  const syllabus = document.getElementById("syllabus").value.trim();
+  const message = document.getElementById("message");
+  const list = document.getElementById("planList");
+
+  if (subject === "" || date === "" || syllabus === "") {
+    message.textContent = "Please fill all fields.";
+    return;
+  }
+
+  message.textContent = "";
+
+  const row = document.createElement("tr");
+  row.innerHTML = `
+    <td>${subject}</td>
+    <td>${date}</td>
+    <td>${syllabus}</td>
+  `;
+
+  list.appendChild(row);
+
+  document.getElementById("subject").value = "";
+  document.getElementById("date").value = "";
+  document.getElementById("syllabus").value = "";
+}
+</script>
+</body>
+</html>

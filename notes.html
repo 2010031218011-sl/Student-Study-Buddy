@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Premium Notes Generator</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <style>
+    body {
+      margin: 0;
+      font-family: "Segoe UI", Arial, sans-serif;
+      background: linear-gradient(135deg, #4a6cf7, #6a82fb);
+      min-height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      padding: 20px;
+    }
+
+    .card {
+      background: #ffffff;
+      width: 100%;
+      max-width: 620px;
+      border-radius: 14px;
+      padding: 25px;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.25);
+    }
+
+    h2 {
+      text-align: center;
+      margin-bottom: 5px;
+    }
+
+    .subtitle {
+      text-align: center;
+      color: #666;
+      font-size: 14px;
+      margin-bottom: 20px;
+    }
+
+    label {
+      font-weight: 600;
+      margin-top: 10px;
+      display: block;
+    }
+
+    select, input {
+      width: 100%;
+      padding: 10px;
+      margin-top: 6px;
+      border-radius: 6px;
+      border: 1px solid #ccc;
+      font-size: 14px;
+    }
+
+    button {
+      width: 100%;
+      margin-top: 15px;
+      padding: 12px;
+      background: #4a6cf7;
+      color: white;
+      border: none;
+      border-radius: 8px;
+      font-size: 16px;
+      cursor: pointer;
+    }
+
+    button:hover {
+      background: #3655d8;
+    }
+
+    .notes {
+      margin-top: 20px;
+      background: #f5f7ff;
+      padding: 18px;
+      border-radius: 8px;
+      font-size: 14px;
+      line-height: 1.7;
+      white-space: pre-line;
+    }
+
+    .badge {
+      display: inline-block;
+      background: #4a6cf7;
+      color: white;
+      padding: 3px 8px;
+      border-radius: 5px;
+      font-size: 12px;
+      margin-bottom: 10px;
+    }
+  </style>
+</head>
+
+<body>
+
+<div class="card">
+  <h2>Notes Generator</h2>
+  <div class="subtitle">Exam-ready notes with real content</div>
+
+  <label>Class</label>
+  <select id="class">
+    <option value="">Select Class</option>
+    <option>Class 6</option>
+    <option>Class 7</option>
+    <option>Class 8</option>
+    <option>Class 9</option>
+    <option>Class 10</option>
+  </select>
+
+  <label>Topic</label>
+  <input type="text" id="topic" placeholder="e.g. Photosynthesis">
+
+  <button onclick="generateNotes()">Generate Notes</button>
+
+  <div id="notes" class="notes"></div>
+</div>
+
+<script>
+function generateNotes() {
+  const cls = document.getElementById("class").value;
+  const topic = document.getElementById("topic").value.trim().toLowerCase();
+  const notesBox = document.getElementById("notes");
+
+  if (cls === "" || topic === "") {
+    notesBox.textContent = "Please select a class and enter a topic.";
+    return;
+  }
+
+  let notes = "";
+
+  // 🌿 PHOTOSYNTHESIS NOTES
+  if (topic === "photosynthesis") {
+    notes =
+`📘 Class: ${cls}
+📌 Topic: Photosynthesis
+
+Definition:
+Photosynthesis is the process by which green plants prepare their own food using sunlight, carbon dioxide, and water.
+
+Chemical Equation:
+6CO₂ + 6H₂O → C₆H₁₂O₆ + 6O₂
+(Carbon dioxide + Water → Glucose + Oxygen)
+
+Raw Materials Required:
+• Sunlight
+• Chlorophyll
+• Carbon dioxide
+• Water
+
+Process of Photosynthesis:
+1. Absorption of light energy by chlorophyll
+2. Conversion of light energy into chemical energy
+3. Splitting of water into hydrogen and oxygen
+4. Formation of glucose
+
+Importance of Photosynthesis:
+• Provides food for plants
+• Releases oxygen necessary for life
+• Maintains balance of gases in the atmosphere
+
+Conclusion:
+Photosynthesis is essential for life on Earth as it forms the base of the food chain.`;
+  }
+
+  // 📘 GENERAL NOTES
+  else {
+    notes =
+`📘 Class: ${cls}
+📌 Topic: ${topic.charAt(0).toUpperCase() + topic.slice(1)}
+
+Definition:
+${topic} is an important topic included in the ${cls} syllabus.
+
+Explanation:
+This topic explains basic concepts in a clear and structured manner to help students understand the subject.
+
+Key Points:
+• Important for exams
+• Builds basic understanding
+• Helps in higher studies
+
+Conclusion:
+Understanding ${topic} improves conceptual clarity and exam performance.`;
+  }
+
+  notesBox.innerHTML = `<div class="badge">NOTES</div>\n${notes}`;
+}
+</script>
+
+</body>
+</html>
